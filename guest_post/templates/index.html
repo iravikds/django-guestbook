@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>GuestBook</title>
+</head>
+<body>
+    <div class="container">
+    <h1 align = "center">GuestBook</h1></br><hr>
+
+    {% for post in posts %}
+    </br>
+    <div align="center">
+        <div class="card bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-header">{{ post.name }}</div>
+            <div class="card-body">
+              <p class="card-text">{{ post.body }}</p>
+            </div>
+    </div>
+    {% endfor %}
+
+</br><hr>
+    
+    {% block content %}
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group" align="center">
+        {{ form.as_p }}
+        </div>
+        <div align="center">
+            <input class="btn btn-primary" type="submit" value="Post"/>
+        </div>
+        
+    </form>
+    {% endblock %}
+    </div>
+</body>
+</html>
