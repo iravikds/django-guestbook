@@ -27,12 +27,11 @@
     {% block content %}
     <form method="post">
         {% csrf_token %}
-        <div class="form-group" align="center">
+        <div class="form-group">
         {{ form.as_p }}
         </div>
-        <div align="center">
-            <input class="btn btn-primary" type="submit" value="Post"/>
-        </div>
+        <input class="btn btn-primary" type="submit" value="Post"/>
+
         
     </form>
     {% endblock %}
