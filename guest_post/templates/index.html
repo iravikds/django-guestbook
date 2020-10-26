@@ -8,21 +8,37 @@
     <title>GuestBook</title>
 </head>
 <body>
-    <div class="container">
-    <h1 align = "center">GuestBook</h1></br><hr>
+
+	<style>
+		.card {
+		box-shadow: 0 0 10px 0 rgba(100, 100, 100, 0.26);
+		}   
+	</style>
+    <div class="container" style="max-width: 25rem;">
+    
+	<nav class="navbar navbar-light bg-light">
+		<a class="navbar-brand" href="#">
+		{% load static %}
+		<img src="{% static "images/img.jpg" %}" width="30" height="30" class="d-inline-block align-top" alt="">GuestBook</a>
+</nav>
 
     {% for post in posts %}
     </br>
     <div align="center">
-        <div class="card bg-light mb-3" style="max-width: 18rem;">
-            <div class="card-header">{{ post.name }}</div>
-            <div class="card-body">
-              <p class="card-text">{{ post.body }}</p>
+        <div class="card bg-light mb-3" style="max-width: 27rem;">
+			{% load static %}
+			<img class="card-img-top" src="{% static "images/img.jpg" %}">
+			<div class="card-body">
+				<h5 class="card-title">{{ post.name }}</h5>
+				<p class="card-text">{{ post.body }}</p>
             </div>
-    </div>
+		</div>
+    
     {% endfor %}
 
-</br><hr>
+</br>
+<p>Leave some memories here!</p>
+<hr>
     
     {% block content %}
     <form method="post">
@@ -30,11 +46,14 @@
         <div class="form-group">
         {{ form.as_p }}
         </div>
-        <input class="btn btn-primary" type="submit" value="Post"/>
+        <input class="btn btn-primary btn-block" type="submit" value="Post"/>
 
         
     </form>
     {% endblock %}
     </div>
+	</div>
+	</br>
+	
 </body>
 </html>
